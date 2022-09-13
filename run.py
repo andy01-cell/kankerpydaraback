@@ -1,16 +1,6 @@
 import base64
-import os
-import numpy as np
-import cv2
-import pickle
-import random
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
 from flask import Flask, request, json,jsonify
-import pydicom
-from PIL import Image
-from werkzeug.utils import secure_filename
-from flask_cors import CORS
+
 
 my_awesome_app = Flask(__name__)
 
