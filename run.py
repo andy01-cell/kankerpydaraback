@@ -2,7 +2,7 @@ import base64
 from flask import Flask, request, json,jsonify
 import os
 import numpy as np
-import cv2
+
 
 my_awesome_app = Flask(__name__)
 
