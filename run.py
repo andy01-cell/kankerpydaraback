@@ -19,7 +19,7 @@ my_awesome_app.secret_key = "caircocoders-ednalan"
 
 UPLOAD_FOLDER = 'static/uploads'
 my_awesome_app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-my_awesome_app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+# my_awesome_app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 UPLOAD_CLASIFER = 'static/clasifer'
 my_awesome_app.config['UPLOAD_CLASIFER'] = UPLOAD_CLASIFER
