@@ -29,7 +29,7 @@ ALLOWED_EXTENSIONS = set(['dcm'])
 
 @my_awesome_app.route('/')
 def hello_world():
-    resp = jsonify({'message': 'Ping andy'})
+    resp = jsonify({'message': 'Ping'})
     resp.status_code = 201
     return resp
 
@@ -89,28 +89,29 @@ def upload_file():
             print("test= ", test)
 
             #
-            # data = []
-            # dir= "E:\\dataset deep learning\\Stadium kanker payudara\\Dataset"
-            #
-            # for category in categories:
-            #   path = os.path.join(dir,category)
-            #   label = categories.index(category)
-            #
-            #   for img in os.listdir(path):
-            #     imgpath = os.path.join(path,img)
-            #     kanker_img=cv2.imread(imgpath,0)
-            #     try:
-            #       kanker_img=cv2.resize(kanker_img,(50,50))
-            #       image = np.array(kanker_img).flatten()
-            #       data.append([image,label])
-            #
-            #     except Exception as e:
-            #       pass
+            data = []
+            dir= "E:\\dataset deep learning\\Stadium kanker payudara\\Dataset"
+            categories = ["stadium 1", "stadium 2", "stadium 3", "stadium 4"]
 
-            # pick_in = open('data.pickle','wb')
-            # pickle.dump(data,pick_in)
-            # pick_in.close ()
-            #
+            for category in categories:
+              path = os.path.join(dir,category)
+              label = categories.index(category)
+
+              for img in os.listdir(path):
+                imgpath = os.path.join(path,img)
+                kanker_img=cv2.imread(imgpath,0)
+                try:
+                  kanker_img=cv2.resize(kanker_img,(50,50))
+                  image = np.array(kanker_img).flatten()
+                  data.append([image,label])
+
+                except Exception as e:
+                  pass
+
+            pick_in = open('data.pickle','wb')
+            pickle.dump(data,pick_in)
+            pick_in.close ()
+
             pick_in = open('data.pickle', 'rb')
             data = pickle.load(pick_in)
             pick_in.close()
@@ -127,17 +128,11 @@ def upload_file():
             model = SVC(C=50, kernel='rbf', gamma='scale')
             model.fit(xtrain, ytrain)
 
-            # pick = open('model.sav', 'wb')
-            # pickle.dump(model,pick)
-            # pick.close()
+            #-------------------------------------
+
             print("data = ", len(data))
             print("training = ", len(xtrain))
             print("testing = ", len(xtest))
-
-            # pick = open('model.sav', 'rb')
-            # model = pickle.load(pick)
-            # pick.close()
-
             print("p = ", features[0])
 
             prediction = model.predict(test)
